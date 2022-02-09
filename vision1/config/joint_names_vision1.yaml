@@ -1,0 +1,61 @@
+controller_joint_names: ['',  'left_front_whlconnect_joint', 'left_back1_joint', 'left_back2_joint', 'right_front_whlconnect_joint', 'right_back1_joint', 'right_back2_joint', 'motor1_joint', 'motor2_joint', 'motor3_joint', ]
+vision1: # change the name
+  # default controller
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Controller 1
+  right_front_whlconnect_ctrl: # change the name
+    type: effort_controllers/JointPositionController # Type of controller. 
+    joint: right_front_whlconnect_joint # Name of the joint.  
+    pid : {p: 100.0 , i: 0.1 , d: 10.0} # Enter your pid values eg. {p: -50.0 , i: 0.0 , d: 0.0}
+
+    # Controller 2
+  right_back1_ctrl: # change the name
+    type: velocity_controllers/JointVelocityController # Type of controller. 
+    joint: right_back1_joint # Name of the joint.  
+    pid : {p: 100.0 , i: 0.1 , d: 10.0} # Enter your pid values eg. {p: -50.0 , i: 0.0 , d: 0.0}
+  
+  # Controller 3
+  right_back2_ctrl: # change the name
+    type: velocity_controllers/JointVelocityController # Type of controller. 
+    joint: right_back2_joint # Name of the joint.  
+    pid : {p: 100.0 , i: 0.1 , d: 10.0} # Enter your pid values eg. {p: -50.0 , i: 0.0 , d: 0.0}
+
+  # Controller 4
+  left_front_whlconnect_ctrl: # change the name
+    type: effort_controllers/JointPositionController # Type of controller. 
+    joint: left_front_whlconnect_joint # Name of the joint.  
+    pid : {p: 100.0 , i: 0.1 , d: 10.0} # Enter your pid values eg. {p: 50.0 , i: 0.0 , d: 0.0}
+ 
+# Controller 12
+  left_back1_ctrl: # change the name
+    type: velocity_controllers/JointVelocityController # Type of controller. 
+    joint: left_back1_joint # Name of the joint.  
+    pid : {p: 100.0 , i: 0.1 , d: 10.0} # Enter your pid values eg. {p: 50.0 , i: 0.0 , d: 0.0}
+  
+    # Controller 12
+  left_back2_ctrl: # change the name
+    type: velocity_controllers/JointVelocityController # Type of controller. 
+    joint: left_back2_joint # Name of the joint.  
+    pid : {p: 100.0 , i: 0.1 , d: 10.0} # Enter your pid values eg. {p: 50.0 , i: 0.0 , d: 0.0}
+   #Controller 12
+
+  
+
+# Controller 1
+  motor1_ctrl: # change the name
+    type: effort_controllers/JointPositionController # Type of controller. 
+    joint: motor1_joint # Name of the joint.  
+    pid : {p: 100.0 , i: 0.1 , d: 10.0} # Enter your pid values eg. {p: -50.0 , i: 0.0 , d: 0.0}
+    # Controller 1
+  motor2_ctrl: # change the name
+    type: effort_controllers/JointPositionController # Type of controller. 
+    joint: motor2_joint # Name of the joint.  
+    pid : {p: 100.0 , i: 0.1 , d: 10.0} # Enter your pid values eg. {p: -50.0 , i: 0.0 , d: 0.0}
+    # Controller 1
+  motor3_ctrl: # change the name
+    type: effort_controllers/JointPositionController # Type of controller. 
+    joint: motor3_joint # Name of the joint.  
+    pid : {p: 100.0 , i: 0.1 , d: 10.0} # Enter your pid values eg. {p: -50.0 , i: 0.0 , d: 0.0}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <!-- including the empty launch file -->
+    <include file="$(find vision1)/launch/empty_world.launch"/>
+       
+
+    <!-- Importing the robot urdf file -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find vision1)/urdf/vision1.xacro " />
+    <param name = "my_robot" value="vision1"/> 
+	<arg name ="init_pose" value="-x 0 -y 0 -z 0 -R 0 -P 0 -Y 0"/>
+    <!-- Spawning the model in gazebo -->
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args=" -param robot_description -urdf -model vision1" output="screen" />
+
+    <!-- Including the yaml file -->
+    <rosparam file="$(find vision1)/config/joint_names_vision1.yaml" command="load" />
+
+    <!-- Set the joint_state input false from gui -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="False" />
+    </node> -->
+
+    <!-- Defining co-ordinates between world and base link -->
+    <node pkg="tf" type="static_transform_publisher" name="map_to_base" args="0 0 0 0 0 0 1 /map /chassis 10" /> -->
+    
+
+    <!-- loading the controllers using control spawner -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/vision1" args="joint_state_controller 
+    right_front_whlconnect_ctrl motor1_ctrl motor2_ctrl motor3_ctrl right_back1_ctrl right_back2_ctrl left_front_whlconnect_ctrl left_back1_ctrl left_back2_ctrl "/>
+
+    <!-- Publishing the robot status to ros pkgs -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
+
+    <!-- Default node for rostopic -->
+    <node name="fake_joint_calibration" pkg="rostopic" type="rostopic" args="pub /calibrated std_msgs/Bool true" />
+
+</launch>
