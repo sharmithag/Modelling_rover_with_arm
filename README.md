@@ -11,12 +11,13 @@ PACKAGE NAME ""VISION1
 ###To run the rover in empty world
 
 #### NEW TERMINAL
-''''
+
+````
 cd catkin_ws
 catkin_make clean && catkin_make
 source devel/setup.bash
 roslaunch vision1 vision1.launch
-''''
+````
 
 #### New terminal(ctrl+shift+t) to run the python code to control the rover
 
